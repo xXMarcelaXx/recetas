@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+
+<h3>Añadir receta</h3>
+<br>
+<form [formGroup]="formReceta"(ngSubmit)="add()">
+    <label for="">Nombre</label><br>
+    <input type="text"class="form-control" placeholder="Nombre"class="form-control" 
+    formControlName="nombre" #nombre ><br>
+    <label for="">Descripción</label><br>
+    <input type="text"class="form-control" placeholder="Descripcion"class="form-control" 
+    formControlName="descripcion" #nombre ><br>
+    <input type="submit"[disabled]="formReceta.invalid" class="btn btn-primary" value="Añadir categoria" (click)="nombre.value=''">
+</form>
+
+
+<br><br>
+<hr>
+<table class="table table-hover">
+    <thead class="table-secondary">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">DESCRIPCION</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let receta of recetas">
+        <th scope="row">{{receta.id}}</th>
+        <td>{{receta.nombre}}</td>
+        <td>{{receta.descripcion}}</td>
+        <td>
+            <button type="submit" class="btn btn-outline-danger"
+            (click)="delete(receta.id)">ELIMINAR</button>
+        </td>
+        <td>
+            <button type="submit" class="btn btn-outline-info" 
+            (click)="editar(receta)">EDITAR</button>
+        </td>
+      </tr>
+    </tbody>
+</table>

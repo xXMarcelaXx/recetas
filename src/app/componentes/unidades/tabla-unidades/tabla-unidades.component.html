@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+
+<h3>Añadir categoria</h3>
+<br>
+<form [formGroup]="formUnidad"(ngSubmit)="add()">
+    <label for="">Nombre</label><br>
+    <input type="text"class="form-control" placeholder="Nombre"class="form-control" 
+    formControlName="nombre" #nombre ><br>
+    <input type="submit"[disabled]="formUnidad.invalid" class="btn btn-primary" value="Añadir categoria" (click)="nombre.value=''">
+</form>
+
+
+<br><br>
+<hr>
+<table class="table table-hover">
+    <thead class="table-secondary">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NOMBRE</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let unidad of unidades">
+        <th scope="row">{{unidad.id}}</th>
+        <td>{{unidad.nombre}}</td>
+        <td>
+            <button type="submit" class="btn btn-outline-danger"
+            (click)="delete(unidad.id)">ELIMINAR</button>
+        </td>
+        <td>
+            <button type="submit" class="btn btn-outline-info" 
+            (click)="editar(unidad)">EDITAR</button>
+        </td>
+      </tr>
+    </tbody>
+</table>

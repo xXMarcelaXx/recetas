@@ -1,0 +1,10 @@
+<app-navbar></app-navbar>
+
+<h3>editar categoria</h3>
+<br>
+<form [formGroup]="formEditarUnidad"(ngSubmit)="editar()">
+    <label for="">Nombre</label><br>
+    <input type="text"class="form-control" placeholder="Nombre"class="form-control" 
+    formControlName="nombre" #nombre [(ngModel)]="unidad.nombre" ><br>
+    <input type="submit"[disabled]="formEditarUnidad.invalid" class="btn btn-primary" value="Añadir categoria">
+</form>

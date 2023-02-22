@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+
+<h3>Añadir ingrediente</h3>
+<br>
+<form [formGroup]="formIngrediente"(ngSubmit)="add()">
+    <label for="">Nombre</label><br>
+    <input type="text"class="form-control" placeholder="Nombre"class="form-control" 
+    formControlName="nombre" #nombre ><br>
+    <label for="">Unidad</label><br>
+    <select type="number"class="form-select" aria-label="Default select example" formControlName="unidad_id">
+        <option *ngFor="let unidad of unidades"[value]="unidad.id">{{unidad.nombre}}</option>
+    </select><br>
+    <input type="submit"[disabled]="formIngrediente.invalid" class="btn btn-primary" value="Añadir ingrediente" (click)="nombre.value=''">
+</form>
+
+
+<br><br>
+<hr>
+<table class="table table-hover">
+    <thead class="table-secondary">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">UNIDAD</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ingrediente of ingredientes">
+        <th scope="row">{{ingrediente.ingrediente_id}}</th>
+        <td>{{ingrediente.ingrediente}}</td>
+        <td>{{ingrediente.unidad}}</td>
+        <td>
+            <button type="submit" class="btn btn-outline-danger"
+            (click)="delete(ingrediente.ingrediente_id)">ELIMINAR</button>
+        </td>
+        <td>
+            <button type="submit" class="btn btn-outline-info" 
+            (click)="editar(ingrediente)">EDITAR</button>
+        </td>
+      </tr>
+    </tbody>
+</table>

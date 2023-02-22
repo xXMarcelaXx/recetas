@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+
+<h3>Actualizar ingrediente</h3>
+<br>
+<form [formGroup]="formIngredienteE"(ngSubmit)="editar()">
+    <label for="">Nombre</label><br>
+    <input type="text"class="form-control" placeholder="Nombre"class="form-control" 
+    formControlName="nombre" #nombre [(ngModel)]="ingrediente.nombre"><br>
+    <label for="">Unidad</label><br>
+    <select type="number"class="form-select" aria-label="Default select example" formControlName="unidad_id">
+        <option *ngFor="let unidad of unidades"[value]="unidad.id">{{unidad.nombre}}</option>
+    </select><br>
+    <input type="submit"[disabled]="formIngredienteE.invalid" class="btn btn-primary" value="Actualizar ingrediente">
+</form>
